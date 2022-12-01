@@ -1,0 +1,12 @@
+{
+  "name": "AoC-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:EvilKanoa/AoC-2022.git",
+  "author": "EvilKanoa <kanoa@kanoa.ca>",
+  "license": "none",
+	"volta": {
+		"node": "16.17.0",
+		"yarn": "1.22.19"
+	}
+}
