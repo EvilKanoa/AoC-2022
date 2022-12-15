@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { sum } = require("./utils");
+const { sum, benchmark } = require("./utils");
 
 const PRIORITIES = [
   ..."abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -16,15 +16,18 @@ const getBadgePriority = ([sack1, sack2, sack3]) => {
   return PRIORITIES[badge];
 };
 
-const sacks = fs
-  .readFileSync("day3.1.txt", { encoding: "utf-8" })
-  .split("\n")
-  .map((contents) => [...contents]);
+const input = fs.readFileSync("day3.1.txt", { encoding: "utf-8" });
 
-// group the sacks
-const groups = [];
-while (sacks.length >= 3) {
-  groups.push(sacks.splice(0, 3));
-}
+let groups;
+
+benchmark(() => {
+  const sacks = input.split("\n").map((contents) => [...contents]);
+
+  // group the sacks
+  groups = [];
+  while (sacks.length >= 3) {
+    groups.push(sacks.splice(0, 3));
+  }
+});
 
 console.log(groups.map(getBadgePriority).reduce(sum));

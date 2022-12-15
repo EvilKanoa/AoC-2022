@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { sum } = require("./utils");
+const { sum, benchmark } = require("./utils");
 
 const PRIORITIES = [
   ..."abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -18,11 +18,14 @@ const getSackPriority = (sack = []) => {
   return PRIORITIES[mistake];
 };
 
-const sacks = fs
-  .readFileSync("day3.1.txt", { encoding: "utf-8" })
-  .split("\n")
-  .map((contents) => [...contents]);
+const input = fs.readFileSync("day3.1.txt", { encoding: "utf-8" });
 
-const sumPriorities = sacks.map(getSackPriority).reduce(sum);
+let sumPriorities;
+
+benchmark(() => {
+  const sacks = input.split("\n").map((contents) => [...contents]);
+
+  sumPriorities = sacks.map(getSackPriority).reduce(sum);
+});
 
 console.log(sumPriorities);

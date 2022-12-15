@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { benchmark } = require("./utils");
 
 const results = {
   "A X": 3 + 1,
@@ -12,10 +13,15 @@ const results = {
   "C Z": 3 + 3,
 };
 
-const score = fs
-  .readFileSync("day2.1.txt", { encoding: "utf-8" })
-  .split("\n")
-  .map((round) => results[round])
-  .reduce((acc, x) => acc + x, 0);
+const input = fs.readFileSync("day2.1.txt", { encoding: "utf-8" });
+
+let score;
+
+benchmark(() => {
+  score = input
+    .split("\n")
+    .map((round) => results[round])
+    .reduce((acc, x) => acc + x, 0);
+});
 
 console.log(score);
