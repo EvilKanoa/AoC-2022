@@ -15,6 +15,20 @@ const utils = {
     const average = runs.reduce(utils.sum) / runs.length;
     console.log(`Average execution over ${count} runs: ${average} ms`);
   },
+  min: (numbers = []) => {
+    let minimum = Number.MAX_VALUE;
+    for (const num of numbers) {
+      minimum = num < minimum ? num : minimum;
+    }
+    return minimum;
+  },
+  max: (numbers = []) => {
+    let maximum = Number.MIN_VALUE;
+    for (const num of numbers) {
+      maximum = num > maximum ? num : maximum;
+    }
+    return maximum;
+  },
 };
 
 module.exports = utils;
