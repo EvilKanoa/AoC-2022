@@ -1,8 +1,8 @@
 const utils = {
   sum: (val, acc) => val + acc,
-  benchmark: (execute) => {
+  benchmark: (execute, once = false) => {
     const runs = [];
-    const count = 100;
+    const count = once ? 1 : 100;
 
     for (let i = 0; i < count; i++) {
       const start = performance.now();
