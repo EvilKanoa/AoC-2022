@@ -1,9 +1,9 @@
 const fs = require("fs");
 const { benchmark } = require("./utils");
 
-const contents = fs.readFileSync("day1.1.txt", { encoding: "utf-8" });
+const contents = fs.readFileSync("day1.1.txt", { encoding: "utf-8" }) as string;
 
-let elfs;
+let elfs: number[];
 
 benchmark(() => {
   elfs = contents
@@ -17,4 +17,4 @@ benchmark(() => {
     .sort((a, b) => b - a);
 });
 
-console.log(elfs[0]);
+console.log(elfs![0]);
