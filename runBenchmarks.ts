@@ -1,7 +1,7 @@
 const { execFileSync } = require("child_process");
 const fs = require("fs");
 
-const files = fs.readdirSync(".");
+const files = fs.readdirSync(".") as string[];
 
 // filter to only solution files
 const solutions = files.filter((filename) => {
@@ -9,11 +9,11 @@ const solutions = files.filter((filename) => {
     return false;
   }
 
-  return !!filename.match(/day[0-9]+.[12].js/gi);
+  return !!filename.match(/day[0-9]+.[12].[jt]s/gi);
 });
 
 // execute each solution
 solutions.forEach((filename) => {
   console.log(`Executing "${filename}"...`);
-  console.log(execFileSync("node", [filename]).toString());
+  console.log(execFileSync("ts-node", [filename]).toString());
 });
