@@ -1,4 +1,9 @@
-import { Vector, SerializedVector, serializeVector, addVectors } from "./vector";
+import {
+  Vector,
+  SerializedVector,
+  serializeVector,
+  addVectors,
+} from "./vector";
 
 const fs = require("fs");
 const { benchmark, max } = require("./utils");
