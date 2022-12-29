@@ -2,7 +2,7 @@ const utils = {
   sum: (val, acc) => val + acc,
   benchmark: (execute, once = false) => {
     const runs = [];
-    const count = once ? 1 : 10;
+    const count = once === true ? 1 : typeof once === 'number' ? once : 10;
 
     for (let i = 0; i < count; i++) {
       const start = performance.now();
@@ -16,14 +16,14 @@ const utils = {
     console.log(`Average execution over ${count} runs: ${average} ms`);
   },
   min: (numbers = []) => {
-    let minimum = Number.MAX_VALUE;
+    let minimum = Number.MAX_SAFE_INTEGER;
     for (const num of numbers) {
       minimum = num < minimum ? num : minimum;
     }
     return minimum;
   },
   max: (numbers = []) => {
-    let maximum = Number.MIN_VALUE;
+    let maximum = Number.MIN_SAFE_INTEGER;
     for (const num of numbers) {
       maximum = num > maximum ? num : maximum;
     }

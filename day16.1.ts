@@ -88,7 +88,9 @@ const bestPath = (
         return undefined;
       }
 
-      return pressure + bestPath(valves, tunnel, time - 1, myOpened, from, cache);
+      return (
+        pressure + bestPath(valves, tunnel, time - 1, myOpened, from, cache)
+      );
     })
     .filter((x): x is number => x !== undefined);
 
@@ -107,3 +109,5 @@ benchmark(() => {
 }, true);
 
 console.log(result);
+
+export {};
