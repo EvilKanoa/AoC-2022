@@ -2,7 +2,7 @@ const utils = {
   sum: (val, acc) => val + acc,
   benchmark: (execute, once = false) => {
     const runs = [];
-    const count = once === true ? 1 : typeof once === 'number' ? once : 10;
+    const count = once === true ? 1 : typeof once === "number" ? once : 10;
 
     for (let i = 0; i < count; i++) {
       const start = performance.now();
@@ -29,6 +29,7 @@ const utils = {
     }
     return maximum;
   },
+  mod: (n, d) => ((n % d) + d) % d,
 };
 
 module.exports = utils;
